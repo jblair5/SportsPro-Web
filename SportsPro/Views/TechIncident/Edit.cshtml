@@ -1,0 +1,68 @@
+﻿@model IncidentViewModel
+@{
+
+	ViewBag.Title = "Edit Incident";
+
+}
+@section scripts {
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+	<script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<h1>Edit Incident</h1>
+
+<form asp-action="Edit" method="post">
+	<div asp-validation-summary="All" class="text-danger"></div>
+
+	<div class="mb-3">
+		<label asp-for="@Model.Incident.Technician" class="form-label col-2">Technician:</label>
+		<label asp-for="@Model.Incident.Technician" class="form-label">@Model.Incident.Technician.Name</label>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="@Model.Incident.Customer" class="form-label col-2">Customer:</label>
+		<label asp-for="@Model.Incident.Customer" class="form-label">@Model.Incident.Customer.FullName</label>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="@Model.Incident.Product" class="form-label col-2">Product:</label>
+		<label asp-for="@Model.Incident.Product" class="form-label">@Model.Incident.Product.Name</label>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="@Model.Incident.Title" class="form-label col-2">Title:</label>
+		<label asp-for="@Model.Incident.Title" class="form-label">@Model.Incident.Title</label>
+	</div>
+
+	<div class="mb-3">
+		<label asp-for="@Model.Incident.DateOpened" class="form-label col-2">Date Opened:</label>
+		<label asp-for="@Model.Incident.DateOpened" class="form-label">@Model.Incident.DateOpened</label>
+	</div>
+
+	<div class="row mb-3">
+		<label asp-for="@Model.Incident.Description" class="form-label col-2">Description:</label>
+		<div class="col-10">
+			<textarea asp-for="@Model.Incident.Description" class="form-control col-10">@Model.Incident.Description</textarea>
+		</div>
+	</div>
+
+	<div class="row mb-3">
+		<label asp-for="@Model.Incident.DateClosed" class="form-label col-2">Date Closed:</label>
+		<div class="col-10">
+			<input asp-for="@Model.Incident.DateClosed" class="form-control" />
+		</div>
+	</div>
+
+	
+	<input type="hidden" asp-for="@Model.Incident.Title" />
+	<input type="hidden" asp-for="@Model.Incident.CustomerID" />
+	<input type="hidden" asp-for="@Model.Incident.ProductID" />
+	<input type="hidden" asp-for="@Model.Incident.TechnicianID" />
+	
+	<input type="hidden" asp-for="@Model.Incident.IncidentID" />
+
+	<button type="submit" class="btn btn-primary">Save</button>
+	<a asp-controller="TechIncident" asp-action="List" class="btn btn-primary">Cancel</a>
+
+	</form>

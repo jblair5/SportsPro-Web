@@ -1,0 +1,35 @@
+﻿@model List<Technician>
+@{
+
+	string title = "Technician " + ViewBag.Action;
+	ViewData["Title"] = title;
+
+}
+
+<h1>@ViewBag.Title</h1>
+
+<div class="p-0">
+	<table class="table table-striped table-bordered">
+		<thead>
+			<tr><th>Name</th><th>Email</th><th>Phone</th><th></th><th></th></tr>
+		</thead>
+		<tbody>
+			@foreach (var technician in Model)
+			{
+				@if (technician.TechnicianID > 0)
+				{
+					<tr>
+						<td>@technician.Name</td>
+					<td>@technician.Email</td>
+					<td>@technician.Phone</td>
+					<td><a asp-controller="Technician" asp-action="Edit" asp-route-id="@technician.TechnicianID" asp-route-slug="@technician.Slug" class="btn btn-primary">Edit</a></td>
+					<td><a asp-controller="Technician" asp-action="Delete" asp-route-id="@technician.TechnicianID" asp-route-slug="@technician.Slug" class="btn btn-primary">Delete</a></td>
+					</tr>
+				}
+			}
+
+		</tbody>
+	</table>
+	<a asp-controller="Technician" asp-action="Add" class="btn btn-primary">Add</a>
+
+</div>

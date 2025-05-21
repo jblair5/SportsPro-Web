@@ -1,0 +1,17 @@
+﻿@model TechnicianViewModel
+@{
+
+	ViewBag.Title = "Get Technician";
+
+}
+
+<h1>Technician</h1>
+
+<form asp-action="List" method="get">
+	<div asp-validation-summary="All" class="text-danger"></div>
+
+	<select asp-for="@Model.ID" asp-items="@(new SelectList(Model.Technicians, "TechnicianID", "Name"))" class="form-select mb-2">
+		<option>Select a Technician...</option>
+	</select>
+	<button class="btn btn-primary" type="submit">Select</button>
+</form>
